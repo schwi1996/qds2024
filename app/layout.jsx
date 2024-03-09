@@ -1,4 +1,4 @@
-import './globals.css'
+// import './globals.css'
 import Head from "./head";
 import Header from './header'
 import Provider from './provider'
