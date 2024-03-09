@@ -1,33 +1,34 @@
+import React from "react";
 import Sidebar from "../app/components/ui/Sidebar/Sidebar";
 import CardPage from "../app/components/ui/Card/CardPage";
 import SearchAndFilter from "../app/components/ui/SearchBar/SearchBar";
-import { useRouter } from "next/router";
+import Header from "../app/components/ui/header";
+import Footer from "../app/components/ui/footer";
 
-const domain = () => {
-  const router = useRouter();
+const Domain = () => {
   return (
-    <div
-      style={{
-        display: "flex",
-        minHeight: "100vh",
-        margin: "0",
-        padding: "0",
-        width: "100%",
-      }}
-    >
-      <div style={{ flex: "0 0 auto" }}>
-        {" "}
-        {/* Sidebar container */}
-        <Sidebar />
+    <>
+      <Header />
+      <div
+        style={{
+          display: "flex",
+          minHeight: "100vh",
+          width: "100%",
+        }}
+      >
+        <div style={{ flex: "0 0 auto" }}>
+          {/* Sidebar container */}
+          <Sidebar />
+        </div>
+        <div style={{ flex: "1", padding: "20px" }}>
+          {/* Main content container */}
+          <SearchAndFilter />
+          <CardPage />
+        </div>
       </div>
-      <div style={{ flex: "1", padding: "20px" }}>
-        {" "}
-        {/* Main content container */}
-        <SearchAndFilter />
-        <CardPage />
-      </div>
-    </div>
+      <Footer />
+    </>
   );
 };
 
-export default domain;
+export default Domain;

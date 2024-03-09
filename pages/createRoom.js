@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { useRouter } from "next/router";
+import Header from "../app/components/ui/header";
+import Footer from "../app/components/ui/footer";
 
 const CreateRoom = () => {
   const [roomName, setRoomName] = useState("");
@@ -8,47 +10,142 @@ const CreateRoom = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Logic to create a room with the specified settings
-    // This could involve an API call to your backend server
     console.log(`Creating room: ${roomName}, Privacy: ${roomPrivacy}`);
+    // Implement room creation logic here
+  };
 
-    // After room creation, you might navigate to the room or to a success page
-    // Replace '/room/[id]' with your actual route for the created room
+  const handleCreateRoom = () => {
+    // Placeholder for create room logic
+    console.log("Room created:", roomName);
+    // Assume room ID is returned upon creation, then navigate to the room
     // router.push(`/room/${createdRoomId}`);
   };
 
   return (
-    <div className="container">
-      <h1>Create a Room</h1>
-      <form onSubmit={handleSubmit}>
-        <div className="form-group">
-          <label htmlFor="roomName">Room Name:</label>
-          <input
-            type="text"
-            id="roomName"
-            value={roomName}
-            onChange={(e) => setRoomName(e.target.value)}
-            required
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="roomPrivacy">Room Privacy:</label>
-          <select
-            id="roomPrivacy"
-            value={roomPrivacy}
-            onChange={(e) => setRoomPrivacy(e.target.value)}
-            required
+    <>
+      <Header />
+      <div className="container">
+        <div className="main-content">
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              height: "100vh",
+              backgroundColor: "#f0f0f0",
+            }}
           >
-            <option value="public">Public</option>
-            <option value="private">Private</option>
-          </select>
+            <div
+              style={{
+                width: "900px",
+                backgroundColor: "white",
+                borderRadius: "16px",
+                boxShadow: "0 4px 16px rgba(0, 0, 0, 0.1)",
+                padding: "20px",
+                display: "flex",
+              }}
+            >
+              {/* Backdrop Selection Section */}
+              <div
+                style={{
+                  flex: 1,
+                  marginRight: "20px",
+                  display: "flex",
+                  flexDirection: "column",
+                }}
+              >
+                <h3>Backdrop</h3>
+                {/* Backdrop options can be generated dynamically */}
+                <div
+                  style={{ display: "flex", justifyContent: "space-between" }}
+                >
+                  {/* Backdrop Item */}
+                  <div
+                    style={{
+                      flex: "1",
+                      margin: "5px",
+                      height: "100px",
+                      backgroundColor: "#D8C3A5",
+                      borderRadius: "8px",
+                    }}
+                  >
+                    BG A
+                  </div>
+                  <div
+                    style={{
+                      flex: "1",
+                      margin: "5px",
+                      height: "100px",
+                      backgroundColor: "#EAE7DC",
+                      borderRadius: "8px",
+                    }}
+                  >
+                    BG B
+                  </div>
+                  <div
+                    style={{
+                      flex: "1",
+                      margin: "5px",
+                      height: "100px",
+                      backgroundColor: "#E98074",
+                      borderRadius: "8px",
+                    }}
+                  >
+                    BG C
+                  </div>
+                  <div
+                    style={{
+                      flex: "1",
+                      margin: "5px",
+                      height: "100px",
+                      backgroundColor: "#E85A4F",
+                      borderRadius: "8px",
+                    }}
+                  >
+                    BG D
+                  </div>
+                </div>
+              </div>
+
+              {/* Room Creation Form Section */}
+              <div
+                style={{ flex: 2, display: "flex", flexDirection: "column" }}
+              >
+                <h2>Create Room</h2>
+                <input
+                  type="text"
+                  placeholder="Room Name"
+                  value={roomName}
+                  onChange={(e) => setRoomName(e.target.value)}
+                  style={{
+                    padding: "10px",
+                    marginBottom: "10px",
+                    borderRadius: "8px",
+                    border: "1px solid #ccc",
+                  }}
+                />
+                {/* Other inputs and options for room settings */}
+                {/* ... */}
+                <button
+                  onClick={handleCreateRoom}
+                  style={{
+                    padding: "10px",
+                    marginTop: "10px",
+                    borderRadius: "8px",
+                    backgroundColor: "#4CAF50",
+                    color: "white",
+                    border: "none",
+                  }}
+                >
+                  Create Room
+                </button>
+              </div>
+            </div>
+          </div>
         </div>
-        <button type="submit" className="create-btn">
-          Create Room
-        </button>
-      </form>
-      {/* ...styles... */}
-    </div>
+      </div>
+      <Footer />
+    </>
   );
 };
 
