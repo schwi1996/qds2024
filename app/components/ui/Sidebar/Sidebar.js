@@ -3,8 +3,11 @@ import React from "react";
 import { Nav, Dropdown } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css"; // Make sure this is imported in _app.js for Next.js projects
 import styles from "./SideBar.module.css";
+import { useSession, signOut } from "next-auth/react";
 
 const Sidebar = () => {
+  const { data: session, status } = useSession();
+
   return (
     <div
       className={`${styles.sidebarContainer} d-flex flex-column flex-shrink-0 p-3`}
@@ -40,14 +43,24 @@ const Sidebar = () => {
           id="dropdown-basic"
           className={`d-flex align-items-center text-wrap ${styles.dropdownToggle}`}
         >
-          <img
-            src="https://github.com/mdo.png"
-            alt=""
-            width="32"
-            height="32"
-            className={`rounded-circle me-2 ${styles.avatar}`}
-          />
-          mdo
+          {session && session.user && session.user.image ? (
+            <img
+              src={session.user.image}
+              alt={session.user.name || "Profile image"}
+              width="32"
+              height="32"
+              className={`rounded-circle me-2 ${styles.avatar}`}
+            />
+          ) : (
+            // Placeholder image or icon when there is no user image
+            <span
+              className={`rounded-circle me-2 ${styles.avatar} ${styles.placeholderAvatar}`}
+            ></span>
+          )}
+          {/* Display user's name or placeholder */}
+          {session && session.user && session.user.name
+            ? session.user.name
+            : "User"}
         </Dropdown.Toggle>
 
         <Dropdown.Menu className={`dropdown-menu-dark ${styles.dropdownMenu}`}>
@@ -55,7 +68,16 @@ const Sidebar = () => {
           <Dropdown.Item href="#">Settings</Dropdown.Item>
           <Dropdown.Item href="#">Profile</Dropdown.Item>
           <Dropdown.Divider />
-          <Dropdown.Item href="#">Sign out</Dropdown.Item>
+          <Dropdown.Item
+            as="button"
+            onClick={() => {
+              signOut({ redirect: true, callbackUrl: "/" });
+              localStorage.removeItem("userID");
+            }}
+            className="text-sm font-medium uppercase tracking-wider text-stone-500"
+          >
+            Sign Out
+          </Dropdown.Item>
         </Dropdown.Menu>
       </Dropdown>
     </div>
