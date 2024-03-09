@@ -6,8 +6,7 @@ import Button from '../ui/button'
 
 const GoogleLoginButton = () => {
   const searchParams = useSearchParams()
-  const callbackUrl = searchParams.get('callbackUrl')
-  console.log(callbackUrl)
+  const callbackUrl = searchParams.get('callbackUrl') + 'home'
 
   return (
     <Button
