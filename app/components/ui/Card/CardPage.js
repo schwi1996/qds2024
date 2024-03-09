@@ -1,6 +1,7 @@
 "use client";
 import React from "react";
 import { Card, Button, Container, Row, Col } from "react-bootstrap";
+import Link from "next/link";
 
 const CardPage = () => {
   const cardsInfo = [
@@ -67,7 +68,7 @@ const CardPage = () => {
   ];
 
   const handleCardClick = (cardId) => {
-    alert(`Card ${cardId} clicked!`);
+    // alert(`Card ${cardId} clicked!`);
     // Implement navigation or any other action here
   };
 
@@ -76,20 +77,22 @@ const CardPage = () => {
       <Row xs={1} md={3} className="g-4">
         {cardsInfo.map((card) => (
           <Col key={card.id}>
-            <Card
-              onClick={() => handleCardClick(card.id)}
-              style={{
-                cursor: "pointer",
-                borderRadius: "10px",
-                boxShadow: "0 4px 8px rgba(0, 0, 0, 0.2)",
-              }}
-            >
-              <Card.Body>
-                <Card.Title>{card.title}</Card.Title>
-                <Card.Text>{card.text}</Card.Text>
-                <Button variant="primary">Go somewhere</Button>
-              </Card.Body>
-            </Card>
+            <Link href={`/hostedRoom`} passHref>
+              <Card
+                onClick={() => handleCardClick(card.id)}
+                style={{
+                  cursor: "pointer",
+                  borderRadius: "10px",
+                  boxShadow: "0 4px 8px rgba(0, 0, 0, 0.2)",
+                }}
+              >
+                <Card.Body>
+                  <Card.Title>{card.title}</Card.Title>
+                  <Card.Text>{card.text}</Card.Text>
+                  <Button variant="primary">Go somewhere</Button>
+                </Card.Body>
+              </Card>
+            </Link>
           </Col>
         ))}
       </Row>
