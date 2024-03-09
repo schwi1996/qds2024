@@ -70,5 +70,4 @@ const DomainPage = () => {
     </div>
   );
 };
-
 export default DomainPage;

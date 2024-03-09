@@ -29,9 +29,11 @@ const Home = () => {
       </div>
       <br></br>
       {/* Footer (at the bottom of the section) */}
+
       <footer className="absolute bottom-0 w-full p-4 text-center">
         Footer content goes here.
       </footer>
+
     </section>
   );
 };
