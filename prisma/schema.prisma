@@ -47,5 +47,14 @@ model User {
   image         String?
   accounts      Account[]
   sessions      Session[]
+  Room          Room[]
 }
 
+model Room {
+  id         String @id @default(auto()) @map("_id") @db.ObjectId
+  title      String
+  maxMembers Int
+  members    Json   @default("{}")
+  hostUserId String @db.ObjectId
+  hostUser   User   @relation(fields: [hostUserId], references: [id])
+}
