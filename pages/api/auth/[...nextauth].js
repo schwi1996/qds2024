@@ -9,7 +9,7 @@ export default async function auth(req, res) {
       GoogleProvider({
         clientId: process.env.GOOGLE_CLIENT_ID,
         clientSecret: process.env.GOOGLE_CLIENT_SECRET
-      })
+      }),
     ],
     callbacks: {
       session: async ({ session, token }) => {
@@ -30,7 +30,7 @@ export default async function auth(req, res) {
     },
     adapter: PrismaAdapter(prisma),
     session: {
-      strategy: 'jwt'
-    }
-  })
+      strategy: 'jwt',
+    },
+  });
 }
