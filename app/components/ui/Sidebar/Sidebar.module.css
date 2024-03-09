@@ -1,0 +1,40 @@
+.sidebarContainer {
+  width: 4.5rem;
+  height: 100vh;
+  background-color: #f8f9fa; /* Light background color */
+  padding: 1rem;
+}
+
+.sidebarLogo {
+  margin-bottom: 2rem;
+}
+
+.sidebarNav {
+  margin-bottom: 0.5rem;
+}
+
+.sidebarDropdownToggle {
+  width: 100%;
+  text-align: center; /* Center align dropdown toggle text */
+}
+
+.navIcon {
+  margin-right: 0;
+}
+
+.avatar {
+  border: 1px solid black; /* Border color */
+}
+
+.dropdownMenu {
+  width: 100%;
+}
+
+.dropdown-item {
+  color: #000; /* Text color */
+}
+
+.dropdown-item:hover, .dropdown-item:focus {
+  color: #fff; /* Text color on hover/focus */
+  background-color: #343a40; /* Dark background color */
+}
