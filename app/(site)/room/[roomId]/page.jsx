@@ -1,11 +1,18 @@
 "use client";
 
 import React, { useState, useRef, useEffect } from "react";
+import {useRouter} from "next/navigation";
 
-const Room = () => {
+const Room = ({params}) => {
+
   const [streamActive, setStreamActive] = useState(false);
+  const [roomTitle, setRoomTitle] = useState("");
+  const [members, setMembers] = useState([{}]);
+  const [hostId, setHostId] = useState("");
+  const [hostUser, setHostUser] = useState({});
   const videoRef = useRef(null);
   const mediaStream = useRef(null);
+  const router = useRouter();
 
   const handleToggleCamera = () => {
     // If the stream is active, stop all tracks, otherwise start the stream
@@ -44,10 +51,50 @@ const Room = () => {
   //   };
   // }, []);
 
+  const handleFinishSession = async (event) => {
+    event.preventDefault();
+    const endpoint = `http://localhost:3000/api/room/${params.roomId}`;
+    fetch(endpoint, {
+      method: "DELETE",
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        router.push('/join')
+      });
+  };
+
+
+  useEffect(() => {    
+    const endpoint = `/api/room/${params.roomId}`;    
+
+    fetch(endpoint, {
+      method: "GET",
+    })    
+    .then((res) => res.json())
+    .then(({room}) => {
+      setRoomTitle(room.title)
+      setMembers(room.members.newRoomMembers)   
+      setHostId(room.hostUserId)
+
+      fetch(`/api/users/${room.hostUserId}`, {
+        method: "GET",
+      })
+      .then((res) => res.json())        
+      .then(({user}) => {
+        setHostUser(user)
+      })
+    })
+  }, []); 
+
   return (
     <div className="room-container">
-      <header className="room-header">
-        <h2>Room Name: Awesome Room</h2>
+      <header className="room-header relative flex items-center justify-between">
+        <div className="flex-grow text-center">
+          <h2 className="">Room Name: Awesome Room</h2>
+        </div>
+        <button onClick={handleFinishSession} className="focus:shadow-outline w-21 p-2 rounded-lg bg-indigo-700 text-indigo-100 transition-colors duration-150 hover:bg-indigo-800">
+          Finish Session
+        </button>
       </header>
       <main className="room-main">
         <section className="left-video-container">
@@ -67,11 +114,12 @@ const Room = () => {
                   {streamActive ? "OFF" : "ON"}
                 </span>
               </div>
-              Host
+              Host 👑 : {hostUser.name}
             </div>
           </div>
           <div className="video-feed">Video feed will be here</div>
-          <div className="participant">Username B</div>
+          {/* <div className="participant">{(!members.length || members.length > 0) ? members[0].name : "blank"}</div> */}
+          <div className="participant">""</div>
         </section>
         <section className="middle-content">
           <iframe
@@ -87,11 +135,11 @@ const Room = () => {
         </section>
         <section className="right-video-container">
           <div className="video-feed">Video feed will be here</div>
-          <div className="participant">Username D</div>
+          <div className="participant">""</div>
           <div className="video-feed">Video feed will be here</div>
-          <div className="participant">Username E</div>
+          <div className="participant">""</div>
           <div className="video-feed">Video feed will be here</div>
-          <div className="participant">Username F</div>
+          <div className="participant">""</div>
         </section>
       </main>
       <aside className="bottom-content">
