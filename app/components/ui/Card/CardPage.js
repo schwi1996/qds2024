@@ -8,8 +8,9 @@ import styles from "./CardPage.module.css";
 export default function Page({ searchedTitle }) {
   const [rooms, setRooms] = useState([]);
   const router = useRouter();
+  
 
-  useEffect(() => {
+  useEffect(() => {    
     // Dynamically build the endpoint URL based on whether there's a searchedTitle
     const endpoint = searchedTitle
       ? `/api/room?title=${encodeURIComponent(searchedTitle)}`
@@ -29,8 +30,38 @@ export default function Page({ searchedTitle }) {
     fetchRooms();
   }, [searchedTitle]); // Re-run the effect whenever searchedTitle changes
 
-  const handleCardClick = (cardId) => {
-    router.push(`/room/${cardId}`);
+  const handleCardClick = async (e, cardId) => {
+    console.log(cardId)
+    e.preventDefault();
+    const data = {
+      userId : localStorage.getItem("userId"),
+    }
+
+    const JSONdata = JSON.stringify(data)
+
+    const endpoint =`api/room/${cardId}`
+
+    const options = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSONdata,
+    }
+
+    const response = await fetch(endpoint, options);
+    console.log("something response" ,response)
+
+    const { updatedRoom, error} = await response.json();
+
+
+    console.log(updatedRoom)
+
+    if(!error){
+      router.push(`/room/${cardId}`);
+    }else{
+      console.log("Error creating room:", error);
+    }    
   };
 
   return (
@@ -39,7 +70,7 @@ export default function Page({ searchedTitle }) {
         {rooms.map((room, index) => (
           <Col key={index}>
             <Card
-              onClick={() => handleCardClick(room.id)}
+              // onClick={() => handleCardClick(room.id)}
               style={{
                 cursor: "pointer",
                 borderRadius: "10px",
@@ -66,9 +97,14 @@ export default function Page({ searchedTitle }) {
                 </Card.Text>
                 <Button
                   variant="primary"
-                  onClick={() => handleCardClick(room.id)}
+                  // onClick={(e) => handleCardClick(e, room.id)}                  
+                >
+                <button
+                  onClick={(e) => handleCardClick(e, room.id)}
                 >
                   Join Room
+                </button>
+                  
                 </Button>
               </Card.Body>
             </Card>

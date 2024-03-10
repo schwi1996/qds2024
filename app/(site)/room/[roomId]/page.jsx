@@ -135,18 +135,20 @@ const Room = ({ params }) => {
               Host 👑 : {hostUser.name}
             </div>
           </div>
-          <div className="video-feed">Video feed will be here</div>
+          {/* <div className="video-feed">Video feed will be here</div> */}
           {/* <div className="participant">{(!members.length || members.length > 0) ? members[0].name : "blank"}</div> */}
-          <div className="participant">""</div>
+          {/* <div className="participant">""</div> */}
         </section>
-        <section className="middle-content"></section>
+        {/* <section className="middle-content"></section> */}
         <section className="right-video-container">
-          <div className="video-feed">Video feed will be here</div>
-          <div className="participant">""</div>
-          <div className="video-feed">Video feed will be here</div>
-          <div className="participant">""</div>
-          <div className="video-feed">Video feed will be here</div>
-          <div className="participant">""</div>
+          {members?.map((member, index) => (
+            <div key={index}>
+              <div className="video-feed">Video feed will be here</div>
+              <div className="participant">{member.name}</div>
+            </div>
+          ))}
+          
+          
         </section>
       </main>
       <aside className="bottom-content">
@@ -183,7 +185,7 @@ const Room = ({ params }) => {
 
         .room-main {
           display: grid;
-          grid-template-columns: 1fr 300px 1fr; /* Adjust this to suit your layout needs */
+          grid-template-columns: 1fr 1fr; /* Adjust this to suit your layout needs */
           grid-gap: 20px; /* Space between columns */
           padding: 20px;
         }
@@ -208,7 +210,7 @@ const Room = ({ params }) => {
         .video-feed {
           position: relative;
           background: #ddd;
-          height: 250px; /* Adjusted height */
+          height: 150px; /* Adjusted height */
           margin-bottom: 20px;
           display: flex;
           justify-content: center;
