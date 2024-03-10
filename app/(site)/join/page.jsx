@@ -25,7 +25,7 @@ const joinPage = () => {
           <SearchAndFilter />
           <CardPage />
         </div>
-      </div>      
+      </div>
     </>
   );
 };
