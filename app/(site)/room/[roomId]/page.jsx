@@ -52,27 +52,24 @@ const Room = () => {
       <main className="room-main">
         <section className="left-video-container">
           <div className="video-feed">
-            <video ref={videoRef} autoPlay playsInline muted></video>
+            <video
+              ref={videoRef}
+              autoPlay
+              playsInline
+              muted
+              className="video-element"
+            ></video>
           </div>
-          <div
-            onClick={handleToggleCamera}
-            style={{
-              cursor: "pointer",
-              display: "inline-flex",
-              alignItems: "center",
-              justifyContent: "center",
-              borderRadius: "50%",
-              width: "40px",
-              height: "40px",
-              backgroundColor: "#007bff",
-              color: "white",
-            }}
-          >
-            <div className="material-icons" style={{ fontSize: "15px" }}>
-              {streamActive ? "OFF" : "ON"}
+          <div>
+            <div className="participant">
+              <div className="camera-toggle" onClick={handleToggleCamera}>
+                <span className="material-icons">
+                  {streamActive ? "OFF" : "ON"}
+                </span>
+              </div>
+              Host
             </div>
           </div>
-          <div className="participant">Host</div>
           <div className="video-feed">Video feed will be here</div>
           <div className="participant">Username B</div>
         </section>
@@ -116,6 +113,12 @@ const Room = () => {
           height: 150vh;
         }
 
+        .video-element {
+          width: 100%;
+          height: 100%;
+          object-fit: cover; // Cover the container; may crop the video
+          border-radius: 10px;
+        }
         .room-header {
           padding: 10px;
           background: #007bff;
@@ -144,6 +147,7 @@ const Room = () => {
         }
 
         .video-feed {
+          position: relative;
           background: #ddd;
           height: 250px; /* Adjusted height */
           margin-bottom: 20px;
@@ -158,6 +162,17 @@ const Room = () => {
           object-fit: cover; /* Cover the container; may crop the video */
           /* object-fit: contain; /* Entire video will fit; no cropping, but may not fill container */
           border-radius: 10px;
+        }
+        .camera-toggle {
+          cursor: pointer;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          border-radius: 50%;
+          width: 35px; // Smaller size for a prettier look
+          height: 35px;
+          background-color: #007bff;
+          color: white;
         }
 
         .bottom-content {
