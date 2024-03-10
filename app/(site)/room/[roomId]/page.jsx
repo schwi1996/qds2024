@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useRef, useEffect } from "react";
+import {useRouter} from "next/navigation";
 
 const Room = ({params}) => {
 
@@ -11,6 +12,7 @@ const Room = ({params}) => {
   const [hostUser, setHostUser] = useState({});
   const videoRef = useRef(null);
   const mediaStream = useRef(null);
+  const router = useRouter();
 
   const handleToggleCamera = () => {
     // If the stream is active, stop all tracks, otherwise start the stream
@@ -49,6 +51,19 @@ const Room = ({params}) => {
   //   };
   // }, []);
 
+  const handleFinishSession = async (event) => {
+    event.preventDefault();
+    const endpoint = `http://localhost:3000/api/room/${params.roomId}`;
+    fetch(endpoint, {
+      method: "DELETE",
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        router.push('/join')
+      });
+  };
+
+
   useEffect(() => {    
     const endpoint = `/api/room/${params.roomId}`;    
 
@@ -73,8 +88,13 @@ const Room = ({params}) => {
 
   return (
     <div className="room-container">
-      <header className="room-header">
-        <h2>Room Name: {roomTitle}</h2>
+      <header className="room-header relative flex items-center justify-between">
+        <div className="flex-grow text-center">
+          <h2 className="">Room Name: Awesome Room</h2>
+        </div>
+        <button onClick={handleFinishSession} className="focus:shadow-outline w-21 p-2 rounded-lg bg-indigo-700 text-indigo-100 transition-colors duration-150 hover:bg-indigo-800">
+          Finish Session
+        </button>
       </header>
       <main className="room-main">
         <section className="left-video-container">
@@ -115,11 +135,11 @@ const Room = ({params}) => {
         </section>
         <section className="right-video-container">
           <div className="video-feed">Video feed will be here</div>
-          <div className="participant">{}</div>
+          <div className="participant">""</div>
           <div className="video-feed">Video feed will be here</div>
-          <div className="participant">{}</div>
+          <div className="participant">""</div>
           <div className="video-feed">Video feed will be here</div>
-          <div className="participant">{}</div>
+          <div className="participant">""</div>
         </section>
       </main>
       <aside className="bottom-content">
