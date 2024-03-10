@@ -73,13 +73,15 @@ const CreateRoom = () => {
               justifyContent: "center",
               alignItems: "center",
               height: "100vh",
-              backgroundColor: "#f0f0f0",
+              backgroundColor: "transparent",
             }}
           >
             <div
               style={{
                 width: "900px",
-                backgroundColor: "white",
+                  backgroundImage: "url('/transpish_blk.png')",
+                  backgroundSize: "100% 100%",
+                  backgroundRepeat: "no-repeat",
                 borderRadius: "16px",
                 boxShadow: "0 4px 16px rgba(0, 0, 0, 0.1)",
                 padding: "20px",
@@ -174,7 +176,7 @@ const CreateRoom = () => {
                     marginTop: "10px",
                     borderRadius: "8px",
                     maxWith: "10px",
-                    backgroundColor: "#4CAF50",
+                    backgroundColor: "#7BA6C2",
                     color: "white",
                     border: "none",
                   }}

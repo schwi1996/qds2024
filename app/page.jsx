@@ -7,23 +7,31 @@ const Home = () => {
     justifyContent: "center",
     height: "100vh", // Full viewport height
     width: "100vw", // Full viewport width
-    background: "url('/your-background-image.jpg') no-repeat center center",
-    backgroundSize: "cover", // Cover the entire page
+    // background: "url('/your-background-image.jpg') no-repeat center center",
+    // backgroundSize: "cover", // Cover the entire page
   };
 
   const cardStyleLeft = {
+    flex: "3", // Shrink the left panel
     padding: "8rem",
-    backgroundColor: "white",
-    borderRadius: "8px",
+    backgroundImage: "url('/transpish_blk.png')",
+    backgroundSize: "auto",
+    backgroundRepeat: "repeat",
+    color: "white",
+    borderRadius: "10px",
     margin: "5rem", // Add space between cards if needed
     boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
   };
 
   const cardStyleRight = {
-    padding: "8rem",
-    backgroundColor: "white",
-    borderRadius: "8px",
-    margin: "3rem", // Add space between cards if needed
+    flex: "2", // Enlarge the right panel
+    padding: "4rem",
+    backgroundImage: "url('/transpish_blk.png')",
+    backgroundSize: "auto",
+    backgroundRepeat: "repeat",
+    color: "white",
+    borderRadius: "10px",
+    margin: "7rem", // Increase the margin to match the left side
     boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
   };
 
@@ -31,26 +39,17 @@ const Home = () => {
     <section style={sectionStyle}>
       <div style={cardStyleLeft}>
         <h1 className="text-2xl font-semibold tracking-tight">
-          Welcome to Our Site
+        Studying, <h1 className="text-2xl font-semibold tracking-tight" style={{color: "orange", fontSize: "40px"}}>comfortably.</h1>
         </h1>
         <p>
-          Your main content text goes here. Describe what your site or company
-          does, and what visitors can expect to find or do here. Your main
-          content text goes here. Describe what your site or company does, and
-          what visitors can expect to find or do here.Your main content text
-          Your main content text goes here. Describe what your site or company
-          does, and what visitors can expect to find or do here. Your main
-          content text goes here. Describe what your site or company does, and
-          what visitors can expect to find or do here.Your main content text
         </p>
       </div>
       <div style={cardStyleRight}>
-        <h1 className="text-2xl font-semibold tracking-tight">
-          Another Heading
+        <h1 className="text-2xl font-semibold tracking-tight" style={{color: "orange", fontSize: "30px"}}>
+          A productive environment just for you.
         </h1>
         <p>
-          More content can go here. This could be information about your
-          services or products.
+          Study in silence with likeminded students in rooms that suit your ideal environment. Listen to shared tracks, monitor eachother's productivity, and chill.
         </p>
       </div>
     </section>

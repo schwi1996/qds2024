@@ -18,10 +18,12 @@ export default function AuthLayout({ children }) {
               </Link>
               <div className='relative mt-12 sm:mt-16'>
                 <h1 className='text-center text-2xl font-medium tracking-tight text-gray-900'>
-                  Sign in to your account
                 </h1>
               </div>
-              <div className='-mx-4 mt-10 flex-auto bg-white py-10 px-4 shadow-2xl shadow-gray-900/10 sm:mx-0 sm:flex-none sm:rounded-5xl sm:p-24'>
+              <div className='' style={{backgroundImage: "url('/transpish_blk.png')",
+      backgroundSize: "auto",
+      backgroundRepeat: "repeat",
+      borderRadius:"25px"}}>
                 {children}
               </div>
             </div>
