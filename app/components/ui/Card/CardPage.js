@@ -1,72 +1,24 @@
 "use client";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Card, Button, Container, Row, Col } from "react-bootstrap";
 import Link from "next/link";
+import Image from "next/image";
 import styles from "./CardPage.module.css";
 
-const CardPage = () => {
-  const cardsInfo = [
-    {
-      id: 1,
-      title: "Card Title 1",
-      text: "Some quick example text to build on the card title and make up the bulk of the card's content.",
-    },
-    {
-      id: 2,
-      title: "Card Title 2",
-      text: "Some quick example text to build on the card title and make up the bulk of the card's content.",
-    },
-    {
-      id: 3,
-      title: "Card Title 3",
-      text: "Some quick example text to build on the card title and make up the bulk of the card's content.",
-    },
-    {
-      id: 4,
-      title: "Card Title 4",
-      text: "Some quick example text to build on the card title and make up the bulk of the card's content.",
-    },
-    {
-      id: 5,
-      title: "Card Title 4",
-      text: "Some quick example text to build on the card title and make up the bulk of the card's content.",
-    },
-    {
-      id: 6,
-      title: "Card Title 4",
-      text: "Some quick example text to build on the card title and make up the bulk of the card's content.",
-    },
-    {
-      id: 7,
-      title: "Card Title 4",
-      text: "Some quick example text to build on the card title and make up the bulk of the card's content.",
-    },
-    {
-      id: 8,
-      title: "Card Title 4",
-      text: "Some quick example text to build on the card title and make up the bulk of the card's content.",
-    },
-    {
-      id: 9,
-      title: "Card Title 4",
-      text: "Some quick example text to build on the card title and make up the bulk of the card's content.",
-    },
-    {
-      id: 10,
-      title: "Card Title 4",
-      text: "Some quick example text to build on the card title and make up the bulk of the card's content.",
-    },
-    {
-      id: 11,
-      title: "Card Title 4",
-      text: "Some quick example text to build on the card title and make up the bulk of the card's content.",
-    },
-    {
-      id: 12,
-      title: "Card Title 4",
-      text: "Some quick example text to build on the card title and make up the bulk of the card's content.",
-    },
-  ];
+export default function Page() {
+  const [roomMapping, setRoomMapping] = useState([]);
+
+  useEffect(() => {
+    const endpoint = "http://localhost:3000/api/rooms";
+    fetch(endpoint, {
+      method: "GET",
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+        setRoomMapping(data.rooms);
+      });
+  }, []);
 
   const handleCardClick = (cardId) => {
     // alert(`Card ${cardId} clicked!`);
@@ -76,29 +28,37 @@ const CardPage = () => {
   return (
     <Container className={styles["cards-container"]}>
       <Row xs={1} md={3} className="g-4">
-        {cardsInfo.map((card) => (
-          <Col key={card.id}>
-            <Link href={`/room/123`} passHref>
-              <Card
-                onClick={() => handleCardClick(card.id)}
-                style={{
-                  cursor: "pointer",
-                  borderRadius: "10px",
-                  boxShadow: "0 4px 8px rgba(0, 0, 0, 0.2)",
-                }}
-              >
-                <Card.Body>
-                  <Card.Title>{card.title}</Card.Title>
-                  <Card.Text>{card.text}</Card.Text>
-                  <Button variant="primary">Go somewhere</Button>
-                </Card.Body>
-              </Card>
-            </Link>
-          </Col>
+        {roomMapping.map((room, index) => (
+          <Link href={`/room/${room.id}}`} key={index}>
+            <Card
+              onClick={() => handleCardClick(room.id)}
+              style={{
+                cursor: "pointer",
+                overflow: "hidden",
+                borderRadius: "10px",
+                boxShadow: "0 4px 8px rgba(0, 0, 0, 0.2)",
+              }}
+            >
+              {room.backgroundImageUrl && (
+                <div style = {{ position: 'relative', borderRadius: '10px' }}>
+                <Image
+                  src={room.backgroundImageUrl}
+                  alt="Image"
+                  className="object-cover"
+                  width={500}
+                  height={250}
+                  priority
+                />
+                </div>
+              )}
+              <Card.Body>
+                <Card.Title>{room.title}</Card.Title>
+                <Button variant="primary">Go somewhere</Button>
+              </Card.Body>
+            </Card>
+          </Link>
         ))}
       </Row>
     </Container>
   );
-};
-
-export default CardPage;
+}
