@@ -76,25 +76,38 @@ export default function Page() {
               }}
             >
               {room.backgroundImageUrl && (
-                <div style = {{ position: 'relative', borderRadius: '10px' }}>
-                <Image
-                  src={room.backgroundImageUrl}
-                  alt="Image"
-                  className="object-cover"
-                  width={500}
-                  height={250}
-                  priority
-                />
+                <div style={{ position: "relative", borderRadius: "10px" }}>
+                  <Image
+                    src={room.backgroundImageUrl}
+                    alt="Image"
+                    className="object-cover"
+                    width={500}
+                    height={250}
+                    priority
+                  />
                 </div>
               )}
               <Card.Body>
                 <Card.Title>{room.title}</Card.Title>
-                <Button 
-                  variant="primary"
-                  onClick={(e) => handleCardClick(e, room.id)}
-                >
-                    Participate
-                </Button>
+                <Card.Text>
+                  <span
+                    style={{
+                      height: "12px",
+                      width: "12px",
+                      backgroundColor: "green",
+                      borderRadius: "50%",
+                      display: "inline-block",
+                      marginRight: "5px",
+                      marginTop: "2px",
+                    }}
+                  ></span>
+                  {room.members.newRoomMembers
+                    ? room.members.newRoomMembers.length
+                    : 0}{" "}
+                  online
+                </Card.Text>
+                <Button className="w-full text-indigo-100 transition-colors duration-150 bg-indigo-700 focus:shadow-outline hover:bg-indigo-800" onClick={(e) => handleCardClick(e, room.id)} >Join</Button>
+
               </Card.Body>
             </Card>          
         ))}

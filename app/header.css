@@ -1,0 +1,115 @@
+.navbar {
+  background-color: #060b26;
+  height: 80px;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+}
+
+.menu-bars {
+  margin-left: 2rem;
+  font-size: 2rem;
+  background: none;
+  cursor: pointer; /* Makes it clear the menu icon is clickable */
+}
+
+.nav-menu {
+  background-color: #060b26;
+  width: 250px;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  left: -100%;
+  transition: all 0.85s cubic-bezier(0.17, 0.84, 0.44, 1); /* Smooth and engaging transition */
+  z-index: 10; /* Ensures the sidebar is above other content */
+}
+
+.nav-menu.active {
+  left: 0;
+  transition: all 0.35s cubic-bezier(0.17, 0.84, 0.44, 1);
+}
+
+.nav-text {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  padding: 8px 0px 8px 16px;
+  list-style: none;
+  height: 60px;
+}
+
+.nav-text a {
+  text-decoration: none;
+  color: #f5f5f5;
+  font-size: 18px;
+  width: 95%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  padding: 0 16px;
+  border-radius: 4px;
+  transition: background-color 0.2s ease; /* Smooth background color transition on hover */
+}
+
+.nav-text a:hover,
+.nav-text a:focus {
+  background-color: #1a83ff; /* Enhanced visual feedback on hover/focus */
+}
+
+.nav-menu-items {
+  width: 100%;
+  padding-top: 20px; /* Adds some space at the top inside the sidebar */
+}
+
+.navbar-toggle {
+  background-color: #060b26;
+  width: 100%;
+  height: 80px;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+}
+
+span {
+  margin-left: 16px;
+  color: #f5f5f5;
+}
+
+/* Additional Enhancements */
+.logo {
+  color: #fff;
+  font-weight: bold;
+  font-size: 22px;
+  cursor: pointer; /* Logo is typically clickable leading to home */
+}
+
+/* Improve visibility and accessibility */
+.nav-text a:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 2px;
+}
+
+/* Add a fade-in effect for sidebar items */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateX(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.nav-text {
+  animation: fadeIn 0.3s ease forwards;
+  opacity: 0; /* Start with elements invisible for animation */
+  animation-delay: calc(
+    0.1s * var(--animation-order)
+  ); /* Delay based on order */
+}
+
+/* Variable to control animation order, set this inline on your nav-text items */
+/* Example: <li className="nav-text" style="--animation-order: 1;"> */
