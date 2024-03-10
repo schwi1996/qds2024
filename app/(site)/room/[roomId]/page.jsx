@@ -84,20 +84,6 @@ const Room = ({ params }) => {
         setHostUser(user)
       })
     })
-      .then((res) => res.json())
-      .then(({ room }) => {
-        setRoomTitle(room.title);
-        setMembers(room.members.newRoomMembers);
-        setHostId(room.hostUserId);
-
-        fetch(`/api/users/${room.hostUserId}`, {
-          method: "GET",
-        })
-          .then((res) => res.json())
-          .then(({ user }) => {
-            setHostUser(user);
-          });
-      });
   }, []);
 
   return (
