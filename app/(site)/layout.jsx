@@ -5,7 +5,10 @@ import { useSession } from "next-auth/react";
 export default function HomeLayout({ children }) {
 
   return (
-    <div className="container mx-auto">      
+    <div style={{
+      backgroundImage: "url('/night_firewatch.png')",
+      backgroundSize: "100% 100%"
+    }}>      
       {children}      
     </div>
   );
