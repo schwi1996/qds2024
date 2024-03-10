@@ -4,8 +4,7 @@ import React from "react";
 import Sidebar from "@/app/components/ui/Sidebar/Sidebar";
 import CardPage from "@/app/components/ui/Card/CardPage";
 import SearchAndFilter from "@/app/components/ui/Searchbar/SearchBar";
-// import Header from "../app/components/ui/header";
-// import Footer from "../app/components/ui/footer";
+
 
 const joinPage = () => {
   return (
