@@ -39,17 +39,27 @@ const Home = () => {
     <section style={sectionStyle}>
       <div style={cardStyleLeft}>
         <h1 className="text-2xl font-semibold tracking-tight">
-        Studying, </h1>
-        <h1 className="text-2xl font-semibold tracking-tight" style={{color: "orange", fontSize: "40px"}}>comfortably.</h1>        
-        <p>
-        </p>
+          Studying,{" "}
+          <div
+            className="text-2xl font-semibold tracking-tight"
+            style={{ color: "orange", fontSize: "40px" }}
+          >
+            comfortably.
+          </div>
+        </h1>
+        {/* <p></p> */}
       </div>
       <div style={cardStyleRight}>
-        <h1 className="text-2xl font-semibold tracking-tight" style={{color: "orange", fontSize: "30px"}}>
+        <h1
+          className="text-2xl font-semibold tracking-tight"
+          style={{ color: "orange", fontSize: "30px" }}
+        >
           A productive environment just for you.
         </h1>
         <p>
-          Study in silence with likeminded students in rooms that suit your ideal environment. Listen to shared tracks, monitor eachother's productivity, and chill.
+          Study in silence with likeminded students in rooms that suit your
+          ideal environment. Listen to shared tracks, monitor eachother's
+          productivity, and chill.
         </p>
       </div>
     </section>
