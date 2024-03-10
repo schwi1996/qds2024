@@ -53,7 +53,7 @@ model User {
 model Room {
   id         String @id @default(auto()) @map("_id") @db.ObjectId
   title      String
-  maxMembers Int
+  maxMembers Int    @default(5)
   members    Json   @default("{}")
   hostUserId String @db.ObjectId
   hostUser   User   @relation(fields: [hostUserId], references: [id])

@@ -1,26 +1,67 @@
 "use client"
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import style from "./createPage.module.css";
 
 const CreateRoom = () => {
   const [roomName, setRoomName] = useState("");
   const [roomPrivacy, setRoomPrivacy] = useState("public");
+  const [userId, setUserId] = useState("");
   const router = useRouter();
 
-  const handleSubmit = (e) => {
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+  //   console.log(`Creating room: ${roomName}, Privacy: ${roomPrivacy}`);
+  //   // Implement room creation logic here
+  // };
+
+  useEffect(() => {
+    const userId = localStorage.getItem("userId");
+
+    setUserId(userId);
+  }, [userId]);
+
+  const handleCreateRoom = async (e) => {
+    // Placeholder for create room logic
     e.preventDefault();
-    console.log(`Creating room: ${roomName}, Privacy: ${roomPrivacy}`);
-    // Implement room creation logic here
+    console.log("Room created:", roomName);
+    
+    console.log("THIS IS USERID HEREEEEEEE" , userId)
+
+    const data = {
+      title : roomName,
+      hostUserId : userId
+    }
+
+    const JSONdata = JSON.stringify(data)
+
+    const endpoint = `api/room`
+
+    const options = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSONdata,
+    };
+
+    const response = await fetch(endpoint, options);
+    console.log(response)
+
+    const { room, error } = await response.json();
+    
+    console.log(room)
+
+    if(!error){
+      router.push(`/room/${room.id}`);
+    }else{
+      console.log("Error creating room:", error);
+    }
+    
   };
 
-  const handleCreateRoom = () => {
-    // Placeholder for create room logic
-    console.log("Room created:", roomName);
-    // Assume room ID is returned upon creation, then navigate to the room
-    // router.push(`/room/${createdRoomId}`);
-  };
+  
 
   return (
     <div className="page-container">      
@@ -56,7 +97,7 @@ const CreateRoom = () => {
                   flexDirection: "column",
                 }}
               >
-                <div class="label-center">Backdrop</div>
+                <div className="label-center">Backdrop</div>
                 {/* Backdrop options can be generated dynamically */}
                 <div style={{ display: "flex", flexWrap: "wrap" }}>
                   {/* Backdrop Item */}
