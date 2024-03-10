@@ -57,4 +57,5 @@ model Room {
   members    Json   @default("{}")
   hostUserId String @db.ObjectId
   hostUser   User   @relation(fields: [hostUserId], references: [id])
+  backgroundImageUrl String?
 }
