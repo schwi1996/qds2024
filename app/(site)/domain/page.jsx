@@ -1,24 +1,23 @@
-import React from "react";
-import { useRouter } from "next/router";
-import Header from "../app/components/ui/header";
-import Footer from "../app/components/ui/footer";
+"use client";
+
+import React from 'react';
+import { useRouter } from "next/navigation";
 
 const DomainPage = () => {
   const router = useRouter();
 
   const handleCreateRoom = () => {
     console.log("Create Room button clicked");
-    router.push("/createRoom");
+    router.push("/create");
   };
 
   const handleJoinRoom = () => {
     console.log("Join Room button clicked");
-    router.push("/joinRoom");
+    router.push("/join");
   };
 
   return (
-    <div className="page-container">
-      <Header />
+    <div className="page-container">      
       <div className="container">
         <h1>Welcome to the Domain</h1>
         <div className="buttons">
@@ -29,8 +28,7 @@ const DomainPage = () => {
             Join Room
           </button>
         </div>
-      </div>
-      <Footer />
+      </div>      
 
       <style jsx>{`
         .page-container {

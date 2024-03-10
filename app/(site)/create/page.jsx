@@ -1,7 +1,8 @@
+"use client"
+
 import React, { useState } from "react";
-import { useRouter } from "next/router";
-import Header from "../app/components/ui/header";
-import Footer from "../app/components/ui/footer";
+import { useRouter } from "next/navigation";
+import style from "./createPage.module.css";
 
 const CreateRoom = () => {
   const [roomName, setRoomName] = useState("");
@@ -22,8 +23,7 @@ const CreateRoom = () => {
   };
 
   return (
-    <>
-      <Header />
+    <>      
       <div className="container">
         <div className="main-content">
           <div
@@ -143,8 +143,7 @@ const CreateRoom = () => {
             </div>
           </div>
         </div>
-      </div>
-      <Footer />
+      </div>      
     </>
   );
 };

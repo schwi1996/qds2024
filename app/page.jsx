@@ -6,12 +6,12 @@ const Home = () => {
       {/* Top-left images or icons (use absolute positioning) */}
       <div className="absolute left-0 top-0 z-10">
         {/* Replace src with your image path */}
-        <Image
+        {/* <Image
           src="/path-to-your-top-left-image.jpg"
           alt="Image description"
           width={100}
           height={100}
-        />
+        /> */}
         {/* Repeat for other images or icons */}
       </div>
 

@@ -1,14 +1,15 @@
-import React from "react";
-import Sidebar from "../app/components/ui/Sidebar/Sidebar";
-import CardPage from "../app/components/ui/Card/CardPage";
-import SearchAndFilter from "../app/components/ui/SearchBar/SearchBar";
-import Header from "../app/components/ui/header";
-import Footer from "../app/components/ui/footer";
+"use client";
 
-const Domain = () => {
+import React from "react";
+import Sidebar from "@/app/components/ui/Sidebar/Sidebar";
+import CardPage from "@/app/components/ui/Card/CardPage";
+import SearchAndFilter from "@/app/components/ui/Searchbar/SearchBar";
+// import Header from "../app/components/ui/header";
+// import Footer from "../app/components/ui/footer";
+
+const joinPage = () => {
   return (
-    <>
-      <Header />
+    <>      
       <div
         style={{
           display: "flex",
@@ -25,10 +26,9 @@ const Domain = () => {
           <SearchAndFilter />
           <CardPage />
         </div>
-      </div>
-      <Footer />
+      </div>      
     </>
   );
 };
 
-export default Domain;
+export default joinPage;
