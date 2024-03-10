@@ -1,10 +1,10 @@
 "use client";
 
-import React from 'react';
-import { useRouter } from "next/navigation";
+import React, {useEffect} from 'react';
+import  { useRouter } from "next/navigation";
 
 const DomainPage = () => {
-  const router = useRouter();
+  const router = useRouter();  
 
   const handleCreateRoom = () => {
     console.log("Create Room button clicked");

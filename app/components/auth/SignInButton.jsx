@@ -1,12 +1,17 @@
 'use client'
 
+import React, {useEffect} from 'react'
 import { useSession, signIn, signOut } from 'next-auth/react'
 import Image from 'next/image'
 
 const SignInButton = () => {
   const { data: session } = useSession()
-
+  
+  
   if (session) {
+    
+      localStorage.setItem("userId", session.user.id)
+    
     return (
       <>
       <div className='flex flex-col justify-center items-center'>
