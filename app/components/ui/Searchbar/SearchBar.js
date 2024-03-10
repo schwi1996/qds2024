@@ -2,7 +2,7 @@
 import React from "react";
 import styles from "./SearchBar.module.css";
 
-const SearchAndFilter = ({ onSearchChange }) => {
+const SearchBar = ({ onSearchChange }) => {
   return (
     <div className={styles["search-bar-container"]}>
       <input
@@ -15,4 +15,4 @@ const SearchAndFilter = ({ onSearchChange }) => {
   );
 };
 
-export default SearchAndFilter;
+export default SearchBar;

@@ -8,6 +8,27 @@ import { useSession, signOut } from "next-auth/react";
 const Sidebar = () => {
   const { data: session, status } = useSession();
 
+  const SidebarData = [
+    {
+      title: "Home",
+      path: "/",
+      icon: <AiFillHome />,
+      cName: "nav-text",
+    },
+    {
+      title: "Create Room",
+      path: "/create",
+      icon: <IoIosAddCircle />,
+      cName: "nav-text",
+    },
+    {
+      title: "Join Room",
+      path: "/join",
+      icon: <MdJoinFull />,
+      cName: "nav-text",
+    },
+  ];
+
   return (
     <div
       className={`${styles.sidebarContainer} d-flex flex-column flex-shrink-0 p-3`}
