@@ -39,8 +39,8 @@ const Home = () => {
     <section style={sectionStyle}>
       <div style={cardStyleLeft}>
         <h1 className="text-2xl font-semibold tracking-tight">
-        Studying, <h1 className="text-2xl font-semibold tracking-tight" style={{color: "orange", fontSize: "40px"}}>comfortably.</h1>
-        </h1>
+        Studying, </h1>
+        <h1 className="text-2xl font-semibold tracking-tight" style={{color: "orange", fontSize: "40px"}}>comfortably.</h1>        
         <p>
         </p>
       </div>
