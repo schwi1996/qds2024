@@ -8,6 +8,17 @@
   background-color: #ffffff;
 }
 
+.labelCenter {
+  text-align: center;
+  font-size: 3vw;
+}
+
+/* Text effects for label within container */
+.createLabel {
+  background-color: gray;
+  border-radius: 20px;
+}
+
 .formGroup {
   /* Adjust class name to match React code if necessary */
   margin-bottom: 20px;
