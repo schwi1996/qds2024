@@ -1,10 +1,9 @@
 "use client";
 
 import React, { useState, useRef, useEffect } from "react";
-import {useRouter} from "next/navigation";
+import { useRouter } from "next/navigation";
 
-const Room = ({params}) => {
-
+const Room = ({ params }) => {
   const [streamActive, setStreamActive] = useState(false);
   const [roomTitle, setRoomTitle] = useState("");
   const [members, setMembers] = useState([{}]);
@@ -59,32 +58,31 @@ const Room = ({params}) => {
     })
       .then((response) => response.json())
       .then((data) => {
-        router.push('/join')
+        router.push("/join");
       });
   };
 
-
-  useEffect(() => {    
-    const endpoint = `/api/room/${params.roomId}`;    
+  useEffect(() => {
+    const endpoint = `/api/room/${params.roomId}`;
 
     fetch(endpoint, {
       method: "GET",
-    })    
-    .then((res) => res.json())
-    .then(({room}) => {
-      setRoomTitle(room.title)
-      setMembers(room.members.newRoomMembers)   
-      setHostId(room.hostUserId)
-
-      fetch(`/api/users/${room.hostUserId}`, {
-        method: "GET",
-      })
-      .then((res) => res.json())        
-      .then(({user}) => {
-        setHostUser(user)
-      })
     })
-  }, []); 
+      .then((res) => res.json())
+      .then(({ room }) => {
+        setRoomTitle(room.title);
+        setMembers(room.members.newRoomMembers);
+        setHostId(room.hostUserId);
+
+        fetch(`/api/users/${room.hostUserId}`, {
+          method: "GET",
+        })
+          .then((res) => res.json())
+          .then(({ user }) => {
+            setHostUser(user);
+          });
+      });
+  }, []);
 
   return (
     <div className="room-container">
@@ -92,12 +90,25 @@ const Room = ({params}) => {
         <div className="flex-grow text-center">
           <h2 className="">Room Name: {roomTitle}</h2>
         </div>
-        <button onClick={handleFinishSession} className="focus:shadow-outline w-21 p-2 rounded-lg bg-indigo-700 text-indigo-100 transition-colors duration-150 hover:bg-indigo-800">
+        <button
+          onClick={handleFinishSession}
+          className="focus:shadow-outline w-21 rounded-lg bg-indigo-700 p-2 text-indigo-100 transition-colors duration-150 hover:bg-indigo-800"
+        >
           Finish Session
         </button>
       </header>
       <main className="room-main">
         <section className="left-video-container">
+          <iframe
+            title="Spotify Embed: Recommendation Playlist "
+            src={`https://open.spotify.com/embed/playlist/7BVUSyrhZ82rjA3wA0bQnB?utm_source=generator&theme=0`}
+            width="100%"
+            height="33%"
+            style={{ minHeight: "50px" }}
+            frameBorder="0"
+            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+            loading="lazy"
+          />
           <div className="video-feed">
             <video
               ref={videoRef}
@@ -110,9 +121,9 @@ const Room = ({params}) => {
           <div>
             <div className="participant">
               <div className="camera-toggle" onClick={handleToggleCamera}>
-                <span className="material-icons">
+                <div className="material-icons">
                   {streamActive ? "OFF" : "ON"}
-                </span>
+                </div>
               </div>
               Host 👑 : {hostUser.name}
             </div>
@@ -121,18 +132,7 @@ const Room = ({params}) => {
           {/* <div className="participant">{(!members.length || members.length > 0) ? members[0].name : "blank"}</div> */}
           <div className="participant">""</div>
         </section>
-        <section className="middle-content">
-          <iframe
-            title="Spotify Embed: Recommendation Playlist "
-            src={`https://open.spotify.com/embed/playlist/7BVUSyrhZ82rjA3wA0bQnB?utm_source=generator&theme=0`}
-            width="100%"
-            height="100%"
-            style={{ minHeight: "300px" }}
-            frameBorder="0"
-            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-            loading="lazy"
-          />
-        </section>
+        <section className="middle-content"></section>
         <section className="right-video-container">
           <div className="video-feed">Video feed will be here</div>
           <div className="participant">""</div>
@@ -193,6 +193,10 @@ const Room = ({params}) => {
           flex-direction: column;
           justify-content: center; /* Centers content vertically in the flex container */
         }
+        .material-icons {
+          text-align: center;
+          content-align: center;
+        }
 
         .video-feed {
           position: relative;
@@ -212,6 +216,7 @@ const Room = ({params}) => {
           border-radius: 10px;
         }
         .camera-toggle {
+          text-align: center;
           cursor: pointer;
           display: inline-flex;
           align-items: center;
