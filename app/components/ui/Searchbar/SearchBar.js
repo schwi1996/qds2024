@@ -2,7 +2,7 @@
 import React from "react";
 import styles from "./SearchBar.module.css";
 
-const SearchAndFilter = ({ onSearchChange, onFilterChange }) => {
+const SearchAndFilter = ({ onSearchChange }) => {
   return (
     <div className={styles["search-bar-container"]}>
       <input

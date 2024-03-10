@@ -2,6 +2,7 @@
 import React from "react";
 import { Card, Button, Container, Row, Col } from "react-bootstrap";
 import Link from "next/link";
+import styles from "./CardPage.module.css";
 
 const CardPage = () => {
   const cardsInfo = [
@@ -73,7 +74,7 @@ const CardPage = () => {
   };
 
   return (
-    <Container>
+    <Container class={styles["cards-container"]}>
       <Row xs={1} md={3} className="g-4">
         {cardsInfo.map((card) => (
           <Col key={card.id}>

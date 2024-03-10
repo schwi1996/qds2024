@@ -10,7 +10,7 @@ export default function RootLayout({ children }) {
       <body className='flex h-full flex-col'>
         <Provider>
           <Header />
-          <main className='grow'>{children}</main>          
+          <main className='grow'>{children}</main>         
         </Provider>
       </body>
     </html>

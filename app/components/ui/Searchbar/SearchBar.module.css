@@ -6,7 +6,7 @@
   overflow: hidden; /* Ensures the child elements do not overflow */
   display: flex;
   justify-content: center;
-  background-color: #fff; /* Adds a white background to the container */
+  background-color: white; /* Adds a white background to the container */
 }
 
 .search-input {

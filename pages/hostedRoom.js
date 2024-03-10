@@ -7,36 +7,35 @@ const Room = () => {
         <h2>Room Name: Awesome Room</h2>
       </header>
       <main className="room-main">
-        <section className="video-container">
-          <h3>Live Video Feed</h3>
-          {/* Placeholder for video feed */}
+        <section className="left-video-container">
+        <div className="video-feed">Video feed will be here</div>
+          <div className="participant">Username A</div>
           <div className="video-feed">Video feed will be here</div>
+          <div className="participant">Username B</div>
         </section>
-        <aside className="sidebar">
-          <section className="participant-list">
-            <h3>Participants</h3>
-            <ul>
-              <li>Participant 1</li>
-              <li>Participant 2</li>
-              {/* List of participants */}
-            </ul>
-          </section>
-          <section className="chat">
-            <h3>Chat</h3>
-            <div className="chat-messages">
-              {/* Chat messages */}
-              <p>Message 1</p>
-              <p>Message 2</p>
-            </div>
-            <form className="chat-form">
-              <input type="text" placeholder="Type a message..." />
-              <button type="submit">Send</button>
-            </form>
-          </section>
-        </aside>
+        <section className="middle-content">
+          {/* Other content in the middle */}
+        </section>
+        <section className="right-video-container">
+          <div className="video-feed">Video feed will be here</div>
+          <div className="participant">Username D</div>
+          <div className="video-feed">Video feed will be here</div>
+          <div className="participant">Username E</div>
+          <div className="video-feed">Video feed will be here</div>
+          <div className="participant">Username F</div>
+        </section>
+        
       </main>
+      <aside className="bottom-content">
+        {/* Content at the bottom left */}
+      </aside>
 
       <style jsx>{`
+        .participant {
+          font-size: 2vw;
+          text-align: center;
+        }
+
         .room-container {
           display: flex;
           flex-direction: column;
@@ -55,18 +54,29 @@ const Room = () => {
           flex: 1;
         }
 
-        .video-container {
-          flex-grow: 1;
-          padding: 20px;
+        .left-video-container,
+        .right-video-container {
+          flex-basis: 50%;
+          padding: 2vw;
+        }
+
+        .middle-content {
+          flex-basis: 50%;
+          padding: 2vw;
         }
 
         .video-feed {
           background: #ddd;
-          height: 300px;
+          height: 150px; /* Adjusted height */
           margin-bottom: 20px;
           display: flex;
           justify-content: center;
           align-items: center;
+          border-radius: 10px;
+        }
+
+        .bottom-content {
+          padding: 10px;
         }
 
         .sidebar {
