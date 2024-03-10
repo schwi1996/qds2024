@@ -3,7 +3,12 @@
 import React, { useState, useRef, useEffect } from "react";
 
 const Room = ({params}) => {
+
   const [streamActive, setStreamActive] = useState(false);
+  const [roomTitle, setRoomTitle] = useState("");
+  const [members, setMembers] = useState([{}]);
+  const [hostId, setHostId] = useState("");
+  const [hostUser, setHostUser] = useState({});
   const videoRef = useRef(null);
   const mediaStream = useRef(null);
 
@@ -44,25 +49,32 @@ const Room = ({params}) => {
   //   };
   // }, []);
 
-  useEffect(() => {
+  useEffect(() => {    
     const endpoint = `/api/room/${params.roomId}`;    
 
     fetch(endpoint, {
       method: "GET",
     })    
     .then((res) => res.json())
-    .then(({data}) => {
-      console.log("THIS IS ROOM!", data)
+    .then(({room}) => {
+      setRoomTitle(room.title)
+      setMembers(room.members.newRoomMembers)   
+      setHostId(room.hostUserId)
+
+      fetch(`/api/users/${room.hostUserId}`, {
+        method: "GET",
+      })
+      .then((res) => res.json())        
+      .then(({user}) => {
+        setHostUser(user)
+      })
     })
-
-  })
-
-
+  }, []); 
 
   return (
     <div className="room-container">
       <header className="room-header">
-        <h2>Room Name: Awesome Room</h2>
+        <h2>Room Name: {roomTitle}</h2>
       </header>
       <main className="room-main">
         <section className="left-video-container">
@@ -82,11 +94,12 @@ const Room = ({params}) => {
                   {streamActive ? "OFF" : "ON"}
                 </span>
               </div>
-              Host
+              Host 👑 : {hostUser.name}
             </div>
           </div>
           <div className="video-feed">Video feed will be here</div>
-          <div className="participant">Username B</div>
+          {/* <div className="participant">{(!members.length || members.length > 0) ? members[0].name : "blank"}</div> */}
+          <div className="participant">""</div>
         </section>
         <section className="middle-content">
           <iframe
@@ -102,11 +115,11 @@ const Room = ({params}) => {
         </section>
         <section className="right-video-container">
           <div className="video-feed">Video feed will be here</div>
-          <div className="participant">Username D</div>
+          <div className="participant">{}</div>
           <div className="video-feed">Video feed will be here</div>
-          <div className="participant">Username E</div>
+          <div className="participant">{}</div>
           <div className="video-feed">Video feed will be here</div>
-          <div className="participant">Username F</div>
+          <div className="participant">{}</div>
         </section>
       </main>
       <aside className="bottom-content">
