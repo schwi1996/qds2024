@@ -8,6 +8,8 @@ const CreateRoom = () => {
   const [roomName, setRoomName] = useState("");
   const [roomPrivacy, setRoomPrivacy] = useState("public");
   const [userId, setUserId] = useState("");
+  const [selectedBackground, setSelectedBackground] = useState("div1");
+  const [selectedBackgroundURL, setSelectedBackgroundURL] = useState("/composto_1.jpg");
   const router = useRouter();
 
   // const handleSubmit = (e) => {
@@ -15,6 +17,11 @@ const CreateRoom = () => {
   //   console.log(`Creating room: ${roomName}, Privacy: ${roomPrivacy}`);
   //   // Implement room creation logic here
   // };
+
+  const getBackgroundImage = (div, imageUrl) => {            
+      setSelectedBackground(div);
+      setSelectedBackgroundURL(imageUrl);
+  }
 
   useEffect(() => {
     const userId = localStorage.getItem("userId");
@@ -26,7 +33,8 @@ const CreateRoom = () => {
     e.preventDefault();
     const data = {
       title : roomName,
-      hostUserId : userId
+      hostUserId : userId,
+      backgroundImageUrl : selectedBackgroundURL
     }
 
     const JSONdata = JSON.stringify(data)
@@ -44,6 +52,8 @@ const CreateRoom = () => {
     const response = await fetch(endpoint, options);
 
     const { room, error } = await response.json();
+
+
 
     if(!error){
       router.push(`/room/${room.id}`);
@@ -96,48 +106,60 @@ const CreateRoom = () => {
                 <div style={{ display: "flex", flexWrap: "wrap" }}>
                   {/* Backdrop Item */}
                   <div
+                    className={`section-divs ${selectedBackground === "div1" ? "border-solid border-4 border-grey-600" : undefined}`}
+                    onClick={() => getBackgroundImage("div1","/composto_1.jpg")}                    
                     style={{
                       flex: "1 0 calc(50% - 10px)",
                       margin: "5px",
                       height: "100px",
-                      backgroundColor: "#D8C3A5",
-                      borderRadius: "8px",
+                      backgroundImage: "url('/camposto_1.jpg')",
+                      backgroundSize: "cover",
+                      borderRadius: "8px",                          
                     }}
                   >
-                    BG A
+                    {/* BG A */}
                   </div>
                   <div
+                    className={`section-divs ${selectedBackground === "div2" ? "border-solid border-4 border-grey-600" : undefined}`}
+                    onClick={() => getBackgroundImage("div2","/camposto_2.jpg")}             
                     style={{
                       flex: "1 0 calc(50% - 10px)",
                       margin: "5px",
                       height: "100px",
-                      backgroundColor: "#EAE7DC",
+                      backgroundImage: "url('/camposto_2.jpg')",
+                      backgroundSize: "cover",
                       borderRadius: "8px",
                     }}
                   >
-                    BG B
+                    {/* BG B */}
                   </div>
                   <div
+                    className={`section-divs ${selectedBackground === "div3" ? "border-solid border-4 border-grey-600" : undefined}`}
+                    onClick={() => getBackgroundImage("div3","/tower_1.png")}             
                     style={{
                       flex: "1 0 calc(50% - 10px)",
                       margin: "5px",
                       height: "100px",
-                      backgroundColor: "#E98074",
+                      backgroundImage: "url('/tower_1.png')",
+                      backgroundSize: "cover",
                       borderRadius: "8px",
                     }}
                   >
-                    BG C
+                    {/* BG C */}
                   </div>
                   <div
+                    className={`section-divs ${selectedBackground === "div4" ? "border-solid border-4 border-grey-600" : undefined}`}
+                    onClick={() => getBackgroundImage("div4","/tower_2.jpg")}             
                     style={{
                       flex: "1 0 calc(50% - 10px)",
                       margin: "5px",
                       height: "100px",
-                      backgroundColor: "#E85A4F",
+                      backgroundImage: "url('/tower_2.jpg')",
+                      backgroundSize: "cover",
                       borderRadius: "8px",
                     }}
                   >
-                    BG D
+                    {/* BG D */}
                   </div>
                 </div>
               </div>
