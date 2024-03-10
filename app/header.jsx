@@ -11,6 +11,7 @@ import LoginButton from "./components/auth/SignInButton";
 import Link from "next/link"; // Import Next.js Link for navigation
 import "./header.css";
 import { useRouter } from "next/navigation"; // Import useRouter for navigation
+import Image from "next/image";
 
 const Header = () => {
   const { data: session } = useSession();
@@ -46,6 +47,16 @@ const Header = () => {
         <div className="hamburger" style={{ paddingLeft: "20px" }}>
           <FaIcons.FaBars onClick={showSidebar} />
         </div>
+
+        {/* Using Next.js Image component */}
+        <Image
+          src="/Logo.png"
+          alt="logo"
+          width={200}
+          height={200}
+          style={{ justifyContent: "center", paddingLeft: "20px" }}
+        />
+
         <div className="navbar-links" style={{ paddingRight: "20px" }}>
           <LoginButton />
         </div>

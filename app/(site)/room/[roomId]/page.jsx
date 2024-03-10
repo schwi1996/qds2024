@@ -9,7 +9,9 @@ const Room = ({ params }) => {
   const [members, setMembers] = useState([{}]);
   const [hostId, setHostId] = useState("");
   const [hostUser, setHostUser] = useState({});
-  const [backgroundImageUrl , setBackgroundImageUrl] = useState("/night_firewatch.png");
+  const [backgroundImageUrl, setBackgroundImageUrl] = useState(
+    "/night_firewatch.png"
+  );
   const videoRef = useRef(null);
   const mediaStream = useRef(null);
   const router = useRouter();
@@ -68,31 +70,32 @@ const Room = ({ params }) => {
 
     fetch(endpoint, {
       method: "GET",
-    })    
-    .then((res) => res.json())
-    .then(({room}) => {
-      setRoomTitle(room.title)
-      setMembers(room.members.newRoomMembers)   
-      setHostId(room.hostUserId)
-      setBackgroundImageUrl(room.backgroundImageUrl)
-
-      fetch(`/api/users/${room.hostUserId}`, {
-        method: "GET",
-      })
-      .then((res) => res.json())        
-      .then(({user}) => {
-        setHostUser(user)
-      })
     })
+      .then((res) => res.json())
+      .then(({ room }) => {
+        setRoomTitle(room.title);
+        setMembers(room.members.newRoomMembers);
+        setHostId(room.hostUserId);
+        setBackgroundImageUrl(room.backgroundImageUrl);
+
+        fetch(`/api/users/${room.hostUserId}`, {
+          method: "GET",
+        })
+          .then((res) => res.json())
+          .then(({ user }) => {
+            setHostUser(user);
+          });
+      });
   }, []);
 
   return (
-    <div className="room-container"
+    <div
+      className="room-container"
       style={{
         backgroundImage: `url('${backgroundImageUrl}')`,
-        backgroundSize: "100% 100%"
-    }}
-      >
+        backgroundSize: "100% 100%",
+      }}
+    >
       <header className="room-header relative flex items-center justify-between">
         <div className="flex-grow text-center">
           <h2 className="">Room Name: {roomTitle}</h2>
@@ -143,12 +146,10 @@ const Room = ({ params }) => {
         <section className="right-video-container">
           {members?.map((member, index) => (
             <div key={index}>
-              <div className="video-feed">Video feed will be here</div>
+              <div className="video-feed-member">Video feed will be here</div>
               <div className="participant">{member.name}</div>
             </div>
           ))}
-          
-          
         </section>
       </main>
       <aside className="bottom-content">
@@ -162,6 +163,8 @@ const Room = ({ params }) => {
           background: #f3f3f3; /* Light grey background */
           border-radius: 10px; /* Match video-feed border radius */
           margin-bottom: 20px; /* Space between participant labels and video feeds */
+          width: 50%; /* Full width */
+          margin: 0 auto; /* Center the participant labels */
         }
 
         .room-container {
@@ -210,13 +213,26 @@ const Room = ({ params }) => {
         .video-feed {
           position: relative;
           background: #ddd;
-          height: 150px; /* Adjusted height */
+          height: 350px; /* Adjusted height */
           margin-bottom: 20px;
           display: flex;
           justify-content: center;
           align-items: center;
           border-radius: 10px;
         }
+
+        .video-feed-member {
+          position: relative;
+          background: #ddd;
+          height: 150px; /* Adjusted height */
+          width: 50%; /* Adjusted width */
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          border-radius: 10px;
+          margin: 0 auto;
+        }
+
         .video-feed video {
           width: 100%;
           height: 100%;
