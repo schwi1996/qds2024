@@ -12,14 +12,14 @@ export default function RootLayout({ children }) {
         className="flex h-full flex-col"
         style={{
           backgroundImage: "url('/day_firewatch.jpg')",
-          backgroundSize: "100% 100%",
+          backgroundSize: "fill fill",
           backgroundRepeat: "no-repeat",
         }}
       >
         <Provider>
           <Header />
           <div className='flex h-screen flex-col bg-[url("/day_firewatch.jpg")] bg-cover'>
-            <main className="flex-grow overflow-auto">{children}</main>
+            <main className="flex-grow">{children}</main>
           </div>
         </Provider>
         <Footer />

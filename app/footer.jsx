@@ -4,8 +4,9 @@ import React from "react";
 
 const Footer = () => {
   const footerStyle = {
-    backgroundColor: "darkgray",
-    padding: "1vw",
+    backgroundColor: "#3d3d3c",
+    color: "#6e6e6d",
+    padding: "0.01vw",
     boxShadow: "0 -2px 4px rgba(0, 0, 0, 0.1)",
     borderTopLeftRadius: "25px",
     borderTopRightRadius: "25px",
@@ -19,7 +20,7 @@ const Footer = () => {
 
   return (
     <footer style={footerStyle}>
-      <p>© 2024 My Domain. All rights reserved.</p>
+      <p>©QDS '24 G12. Bgr Credit: 'Firewatch'.</p>
     </footer>
   );
 };
