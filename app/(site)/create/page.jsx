@@ -107,7 +107,7 @@ const CreateRoom = () => {
                   {/* Backdrop Item */}
                   <div
                     className={`section-divs ${selectedBackground === "div1" ? "border-solid border-4 border-grey-600" : undefined}`}
-                    onClick={() => getBackgroundImage("div1","/composto_1.jpg")}                    
+                    onClick={() => getBackgroundImage("div1","/camposto_1.jpg")}                    
                     style={{
                       flex: "1 0 calc(50% - 10px)",
                       margin: "5px",
