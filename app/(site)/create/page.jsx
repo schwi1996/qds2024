@@ -23,7 +23,8 @@ const CreateRoom = () => {
   };
 
   return (
-    <>      
+    <div className="page-container">
+      <Header />
       <div className="container">
         <div className="main-content">
           <div
@@ -45,6 +46,8 @@ const CreateRoom = () => {
                 display: "flex",
               }}
             >
+
+              <div style={{ display: "flex", width: "100%" }}>
               {/* Backdrop Selection Section */}
               <div
                 style={{
@@ -54,15 +57,13 @@ const CreateRoom = () => {
                   flexDirection: "column",
                 }}
               >
-                <h3>Backdrop</h3>
+                <div class="label-center">Backdrop</div>
                 {/* Backdrop options can be generated dynamically */}
-                <div
-                  style={{ display: "flex", justifyContent: "space-between" }}
-                >
+                <div style={{ display: "flex", flexWrap: "wrap" }}>
                   {/* Backdrop Item */}
                   <div
                     style={{
-                      flex: "1",
+                      flex: "1 0 calc(50% - 10px)",
                       margin: "5px",
                       height: "100px",
                       backgroundColor: "#D8C3A5",
@@ -73,7 +74,7 @@ const CreateRoom = () => {
                   </div>
                   <div
                     style={{
-                      flex: "1",
+                      flex: "1 0 calc(50% - 10px)",
                       margin: "5px",
                       height: "100px",
                       backgroundColor: "#EAE7DC",
@@ -84,7 +85,7 @@ const CreateRoom = () => {
                   </div>
                   <div
                     style={{
-                      flex: "1",
+                      flex: "1 0 calc(50% - 10px)",
                       margin: "5px",
                       height: "100px",
                       backgroundColor: "#E98074",
@@ -95,7 +96,7 @@ const CreateRoom = () => {
                   </div>
                   <div
                     style={{
-                      flex: "1",
+                      flex: "1 0 calc(50% - 10px)",
                       margin: "5px",
                       height: "100px",
                       backgroundColor: "#E85A4F",
@@ -109,9 +110,9 @@ const CreateRoom = () => {
 
               {/* Room Creation Form Section */}
               <div
-                style={{ flex: 2, display: "flex", flexDirection: "column" }}
+                style={{ flex: 1, display: "flex", flexDirection: "column" }}
               >
-                <h2>Create Room</h2>
+                <div className='createLabel'>Create Room</div>
                 <input
                   type="text"
                   placeholder="Room Name"
@@ -132,6 +133,7 @@ const CreateRoom = () => {
                     padding: "10px",
                     marginTop: "10px",
                     borderRadius: "8px",
+                    maxWith: "10px",
                     backgroundColor: "#4CAF50",
                     color: "white",
                     border: "none",
@@ -143,8 +145,10 @@ const CreateRoom = () => {
             </div>
           </div>
         </div>
-      </div>      
-    </>
+      </div>
+      <Footer />
+    </div>
+    </div>
   );
 };
 
