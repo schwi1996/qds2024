@@ -1,4 +1,4 @@
-import { joinRoomById } from '@/lib/prisma/room'
+import { joinRoomById, deleteRoom } from '@/lib/prisma/room'
 
 const handler = async (req, res) => {
   if (req.method === 'POST') {
@@ -15,7 +15,19 @@ const handler = async (req, res) => {
     }
   }
 
-  res.setHeader('Allow', ['GET'])
+  if (req.method === 'DELETE') {
+    try {
+      const { roomId } = req.query
+      const { room, error } = await deleteRoom(roomId)
+
+      if (error) throw new Error(error)
+      return res.status(200).json({ room })
+    } catch (error) {
+      return res.status(500).json({ error: error.message })
+    }
+  }
+
+  res.setHeader('Allow', ['POST', 'DELETE'])
   res.status(425).end(`Method ${req.method} is not allowed.`)
 }
 
