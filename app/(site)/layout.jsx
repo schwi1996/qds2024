@@ -11,7 +11,7 @@ export default function HomeLayout({ children }) {
   useEffect(() => {
     if (status !== "loading") {
       if (session){
-        push("/domain")
+        // push("/domain")
       }else{
         redirect("/")
       }
