@@ -26,8 +26,6 @@ const handler = async (req, res) => {
     try {
       const { title } = req.query;
       const { rooms, error } = await searchRoomsByTitle(title);
-
-      console.log("rooms", rooms);
       
       if (error) throw new Error(error);
       return res.status(200).json({ rooms });
