@@ -23,8 +23,7 @@ const CreateRoom = () => {
   };
 
   return (
-    <div className="page-container">
-      <Header />
+    <div className="page-container">      
       <div className="container">
         <div className="main-content">
           <div
@@ -145,8 +144,7 @@ const CreateRoom = () => {
             </div>
           </div>
         </div>
-      </div>
-      <Footer />
+      </div>      
     </div>
     </div>
   );
