@@ -2,7 +2,7 @@
 
 import React, { useState, useRef, useEffect } from "react";
 
-const Room = () => {
+const Room = ({params}) => {
   const [streamActive, setStreamActive] = useState(false);
   const videoRef = useRef(null);
   const mediaStream = useRef(null);
@@ -43,6 +43,21 @@ const Room = () => {
   //     }
   //   };
   // }, []);
+
+  useEffect(() => {
+    const endpoint = `/api/room/${params.roomId}`;    
+
+    fetch(endpoint, {
+      method: "GET",
+    })    
+    .then((res) => res.json())
+    .then(({data}) => {
+      console.log("THIS IS ROOM!", data)
+    })
+
+  })
+
+
 
   return (
     <div className="room-container">

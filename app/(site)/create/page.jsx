@@ -23,12 +23,7 @@ const CreateRoom = () => {
   }, [userId]);
 
   const handleCreateRoom = async (e) => {
-    // Placeholder for create room logic
     e.preventDefault();
-    console.log("Room created:", roomName);
-    
-    console.log("THIS IS USERID HEREEEEEEE" , userId)
-
     const data = {
       title : roomName,
       hostUserId : userId
@@ -47,11 +42,8 @@ const CreateRoom = () => {
     };
 
     const response = await fetch(endpoint, options);
-    console.log(response)
 
     const { room, error } = await response.json();
-    
-    console.log(room)
 
     if(!error){
       router.push(`/room/${room.id}`);
