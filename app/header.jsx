@@ -43,9 +43,10 @@ const Header = () => {
     <IconContext.Provider value={{ color: "#fff" }}>
       <div className="navbar">
         {/* Menu Icon */}
-        <FaIcons.FaBars onClick={showSidebar} />
-
-        <div className="navbar-links">
+        <div className="hamburger" style={{ paddingLeft: "20px" }}>
+          <FaIcons.FaBars onClick={showSidebar} />
+        </div>
+        <div className="navbar-links" style={{ paddingRight: "20px" }}>
           <LoginButton />
         </div>
 
