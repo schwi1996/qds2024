@@ -165,6 +165,7 @@ const Room = ({ params }) => {
           margin-bottom: 20px; /* Space between participant labels and video feeds */
           width: 50%; /* Full width */
           margin: 0 auto; /* Center the participant labels */
+          margin-top: 10px; /* Space between the top of the container and the first participant label */
         }
 
         .room-container {
@@ -231,6 +232,7 @@ const Room = ({ params }) => {
           align-items: center;
           border-radius: 10px;
           margin: 0 auto;
+          margin-top: 10px;
         }
 
         .video-feed video {
