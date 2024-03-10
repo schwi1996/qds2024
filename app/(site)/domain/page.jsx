@@ -17,7 +17,7 @@ const DomainPage = () => {
   };
 
   return (
-    <div className="page-container">      
+    <div className="page-container home">      
       <div className="container">
         <h1>Welcome to the Domain</h1>
         <div className="buttons">

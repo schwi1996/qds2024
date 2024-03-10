@@ -64,7 +64,7 @@ const CreateRoom = () => {
   
 
   return (
-    <div className="page-container">      
+    <div className="page-container createroom">      
       <div className="container">
         <div className="main-content">
           <div
