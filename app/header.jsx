@@ -1,47 +1,65 @@
 "use client";
-import { IconContext } from 'react-icons';
+import React, { useState } from "react";
+import { IconContext } from "react-icons";
+import { AiFillHome, AiOutlineClose } from "react-icons/ai";
+import { IoIosAddCircle } from "react-icons/io";
+import { MdJoinFull } from "react-icons/md";
+import * as FaIcons from "react-icons/fa";
+import * as AiIcons from "react-icons/ai";
 import LoginButton from "./components/auth/SignInButton";
-import SidebarData from './components/ui/Sidebar/SideBarData';
-import React, { useState } from 'react';
-import * as FaIcons from 'react-icons/fa';
-import * as AiIcons from 'react-icons/ai';
-import { Link } from 'react-scroll';
-import './header.css';
-
-
+import Link from "next/link"; // Import Next.js Link for navigation
+import "./header.css";
 
 const Header = () => {
   const [sidebar, setSidebar] = useState(false);
+  const showSidebar = () => setSidebar(!sidebar);
 
-  const showSidebar = () => setSidebar(!sidebar)
   return (
-    <IconContext.Provider value={{ color: '#fff' }}>
-        <div className="navbar">
-          <Link to="#" className="menu-bars" smooth={true} duration={500} onClick={showSidebar}>
-            <FaIcons.FaBars />
-          </Link>
-          <div style={{ marginLeft: 'auto' }}>
-            <LoginButton />
-          </div>
+    <IconContext.Provider value={{ color: "#fff" }}>
+      <div className="navbar">
+        {/* Menu Icon */}
+        <FaIcons.FaBars onClick={showSidebar} />
+
+        <div className="navbar-links">
+          <LoginButton />
         </div>
-        <nav className={sidebar ? 'nav-menu active' : 'nav-menu'}>
+
+        {/* Sidebar Menu */}
+        <nav className={sidebar ? "nav-menu active" : "nav-menu"}>
           <ul className="nav-menu-items" onClick={showSidebar}>
             <li className="navbar-toggle">
-              <Link to="#" className="menu-bars" smooth={true} duration={500} onClick={(e) => { showSidebar(); e.stopPropagation(); }}>
-                <AiIcons.AiOutlineClose />
+              <AiIcons.AiOutlineClose />
+            </li>
+            {/* Dynamically create sidebar links */}
+            <li>
+              <Link legacyBehavior href="/" passHref>
+                <a>
+                  {" "}
+                  <AiFillHome /> Home
+                </a>
               </Link>
             </li>
-            {SidebarData.map((item, index) => (
-              <li key={index} className={item.cName}>
-                <Link to={item.path} smooth={true} duration={500}>
-                  {item.icon}
-                  <span>{item.title}</span>
-                </Link>
-              </li>
-            ))}
+            <li>
+              <Link legacyBehavior href="/create" passHref>
+                <a>
+                  {" "}
+                  <IoIosAddCircle />
+                  Create Room
+                </a>
+              </Link>
+            </li>
+            <li>
+              <Link legacyBehavior href="/join" passHref>
+                <a>
+                  <MdJoinFull />
+                  Join Room
+                </a>
+              </Link>
+            </li>
           </ul>
         </nav>
-      </IconContext.Provider>
+      </div>
+    </IconContext.Provider>
   );
 };
 
