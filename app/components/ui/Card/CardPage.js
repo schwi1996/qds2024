@@ -74,11 +74,11 @@ const CardPage = () => {
   };
 
   return (
-    <Container class={styles["cards-container"]}>
+    <Container className={styles["cards-container"]}>
       <Row xs={1} md={3} className="g-4">
         {cardsInfo.map((card) => (
           <Col key={card.id}>
-            <Link href={`/hostedRoom`} passHref>
+            <Link href={`/room/123`} passHref>
               <Card
                 onClick={() => handleCardClick(card.id)}
                 style={{
