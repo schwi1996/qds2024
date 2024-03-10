@@ -9,6 +9,7 @@ const Room = ({ params }) => {
   const [members, setMembers] = useState([{}]);
   const [hostId, setHostId] = useState("");
   const [hostUser, setHostUser] = useState({});
+  const [backgroundImageUrl , setBackgroundImageUrl] = useState("/night_firewatch.png");
   const videoRef = useRef(null);
   const mediaStream = useRef(null);
   const router = useRouter();
@@ -67,6 +68,21 @@ const Room = ({ params }) => {
 
     fetch(endpoint, {
       method: "GET",
+    })    
+    .then((res) => res.json())
+    .then(({room}) => {
+      setRoomTitle(room.title)
+      setMembers(room.members.newRoomMembers)   
+      setHostId(room.hostUserId)
+      setBackgroundImageUrl(room.backgroundImageUrl)
+
+      fetch(`/api/users/${room.hostUserId}`, {
+        method: "GET",
+      })
+      .then((res) => res.json())        
+      .then(({user}) => {
+        setHostUser(user)
+      })
     })
       .then((res) => res.json())
       .then(({ room }) => {
@@ -85,7 +101,12 @@ const Room = ({ params }) => {
   }, []);
 
   return (
-    <div className="room-container">
+    <div className="room-container"
+      style={{
+        backgroundImage: `url('${backgroundImageUrl}')`,
+        backgroundSize: "100% 100%"
+    }}
+      >
       <header className="room-header relative flex items-center justify-between">
         <div className="flex-grow text-center">
           <h2 className="">Room Name: {roomTitle}</h2>
