@@ -90,7 +90,7 @@ const Room = ({params}) => {
     <div className="room-container">
       <header className="room-header relative flex items-center justify-between">
         <div className="flex-grow text-center">
-          <h2 className="">Room Name: Awesome Room</h2>
+          <h2 className="">Room Name: {roomTitle}</h2>
         </div>
         <button onClick={handleFinishSession} className="focus:shadow-outline w-21 p-2 rounded-lg bg-indigo-700 text-indigo-100 transition-colors duration-150 hover:bg-indigo-800">
           Finish Session

@@ -19,7 +19,7 @@ const DomainPage = () => {
   return (
     <div className="page-container home">      
       <div className="container">
-        <h1>Welcome to the Domain</h1>
+        <span>Welcome to the Domain</span>
         <div className="buttons">
           <button onClick={handleCreateRoom} className="create-room-btn">
             Create Room
