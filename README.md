@@ -15,10 +15,13 @@
   </ol>
 </details>
 <br />
+
+
 <div align="center">
-  <a href="https://github.com/schwi1996/qds2024">
+  ![image](https://github.com/schwi1996/qds2024/assets/81988553/27254181-4964-4945-ab94-60d040a5065e)
+<!--   <a href="https://github.com/schwi1996/qds2024">
     <img src="https://private-user-images.githubusercontent.com/63331153/311523747-3e1cecec-ca1d-44fe-b108-ff1549c5301f.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3MTAwODc0NjMsIm5iZiI6MTcxMDA4NzE2MywicGF0aCI6Ii82MzMzMTE1My8zMTE1MjM3NDctM2UxY2VjZWMtY2ExZC00NGZlLWIxMDgtZmYxNTQ5YzUzMDFmLnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNDAzMTAlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjQwMzEwVDE2MTI0M1omWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTlhMzM0MmIxZDMyODJmNDY4NGZhNmFiODkzY2E0MmY3NDYwY2UxNGI0OTEzZDc4MjVmYTFiOTc5NDk5YzZjMTQmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0JmFjdG9yX2lkPTAma2V5X2lkPTAmcmVwb19pZD0wIn0.74BdL8F7FCMB8VyZzOuIFLFHTHBTMcQ4z_bYU_M5f7M" alt="Logo" width="400" height="200">
-  </a>
+  </a> -->
 
   <h3 align="center">Study With Me</h3>
 
