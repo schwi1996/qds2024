@@ -16,9 +16,13 @@
 </details>
 <br />
 
+![image](https://github.com/schwi1996/qds2024/assets/81988553/27254181-4964-4945-ab94-60d040a5065e)
+![image](https://github.com/schwi1996/qds2024/assets/81988553/98997086-39dd-4018-8fd5-8b7367d57514)
+![image](https://github.com/schwi1996/qds2024/assets/81988553/e1e73a9a-9979-44e6-86f8-c47cd03befb2)
+![image](https://github.com/schwi1996/qds2024/assets/81988553/c5424f17-7af7-47c6-bf65-73a7b7fda4e6)
+
 
 <div align="center">
-  ![image](https://github.com/schwi1996/qds2024/assets/81988553/27254181-4964-4945-ab94-60d040a5065e)
 <!--   <a href="https://github.com/schwi1996/qds2024">
     <img src="https://private-user-images.githubusercontent.com/63331153/311523747-3e1cecec-ca1d-44fe-b108-ff1549c5301f.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3MTAwODc0NjMsIm5iZiI6MTcxMDA4NzE2MywicGF0aCI6Ii82MzMzMTE1My8zMTE1MjM3NDctM2UxY2VjZWMtY2ExZC00NGZlLWIxMDgtZmYxNTQ5YzUzMDFmLnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNDAzMTAlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjQwMzEwVDE2MTI0M1omWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTlhMzM0MmIxZDMyODJmNDY4NGZhNmFiODkzY2E0MmY3NDYwY2UxNGI0OTEzZDc4MjVmYTFiOTc5NDk5YzZjMTQmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0JmFjdG9yX2lkPTAma2V5X2lkPTAmcmVwb19pZD0wIn0.74BdL8F7FCMB8VyZzOuIFLFHTHBTMcQ4z_bYU_M5f7M" alt="Logo" width="400" height="200">
   </a> -->
@@ -44,9 +48,9 @@
 ## Contributors
 
 | Eric                                   | Helen                                                      | Jasper            | Juan                    | Samuel
-| ---------------------------------------- | ----------------------------------------------------------- | ----------------- | ----------------------- | ------------ |
-| _Hi, My name is Eric, Let's do this!_ | _Hi, my name is helen, let's go!_ | _Hi, my name is Jasper, I love hackathon_ | _Hi, my name is Juan! let's gooooo!_ | _Hi, my name is Samuel, lets build awesome app_
-| `Fullstack`                            | `Fullstack`                                               | `Fullstack`     | `Fullstack`           | `Fullstack` |
+| -------------------------------------- | ----------------------------------------------------------- | ----------------- | ----------------------- | ------------ |
+| _Hi, My name is Eric, Let's do this!_  | _Hi, my name is helen, let's go!_ | _Hi, my name is Jasper, I love hackathon_ | _Hi, my name is Juan! let's gooooo!_ | _Hi, my name is Samuel, lets build awesome app_
+| `Product Manager`                          | `Front-End`                                               | `Back-End`     | `Back-End`           | `UI/UX` |
 
 
 
